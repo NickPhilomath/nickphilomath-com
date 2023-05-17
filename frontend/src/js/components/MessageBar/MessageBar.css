@@ -1,0 +1,39 @@
+.message-bar {
+    margin-bottom: 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+}
+
+.message-bar .message {
+    color: white;
+    box-shadow: 0px 0px 7px 0px var(--color-box-shadow);
+    font-weight: bold;
+    padding: 18px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 20px;
+    background: green;
+}
+
+.message-bar .message svg {
+    margin-left: 15px;
+}
+
+.message-bar .message svg:hover {
+    color: rgb(51, 154, 222);
+    cursor: pointer;
+}
+
+.message-bar .danger {
+    background-color: rgb(228, 64, 64);
+}
+
+.message-bar .warning {
+    background-color: rgb(227, 196, 69);
+}
+
+.message-bar .success {
+    background-color: rgb(74, 178, 72);
+}

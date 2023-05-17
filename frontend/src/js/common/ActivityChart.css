@@ -1,0 +1,49 @@
+.activity-chart .chart {
+    background: rgba(221, 221, 221, 0.788);
+    margin: 0px 40px;
+    margin-top: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.activity-chart .chart-element {
+    position: absolute;
+    height: 30px !important;
+}
+
+.activity-chart .time-start {
+    position: absolute;
+    font-size: 0.8rem;
+    top: -18px;
+    left: 0;
+    transform: translateX(-10%);
+}
+
+.activity-chart .time-end {
+    position: absolute;
+    font-size: 0.8rem;
+    top: -18px;
+    right: 0;
+    transform: translateX(10%);
+}
+
+.activity-chart .chart-map {
+    margin: 0 50px;
+    height: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.activity-chart .chart-map .color {
+    display: flex;
+    margin: 0 20px;
+    align-items: center;
+}
+
+.activity-chart .chart-map .box {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin-right: 15px;
+}

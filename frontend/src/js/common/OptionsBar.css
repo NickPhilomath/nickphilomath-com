@@ -1,0 +1,30 @@
+.options-bar {
+    margin-top: 30px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(191, 191, 191);
+}
+
+.options-bar .option {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.options-bar .option a {
+    padding: 10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    text-decoration: none;
+    color: rgb(44, 44, 44);
+}
+
+.options-bar .option:hover a {
+    border-bottom: 1px solid rgb(92, 92, 92);
+    background: rgba(217, 217, 217, 0.551);
+}
+
+.options-bar .active-option {
+    border-bottom: 1px solid rgb(92, 92, 92);
+    background: rgba(237, 237, 237, 0.551);
+}

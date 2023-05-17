@@ -1,0 +1,25 @@
+.msg {
+    color: rgb(62, 62, 62);
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center
+}
+
+.info {
+    background: blue;
+}
+
+.warning {
+    background: yellow;
+}
+
+.error {
+    background: rgb(255, 195, 195);
+}
+
+.msg svg {
+    font-size: 1.2rem;
+    color: rgb(255, 59, 59);
+    margin-right: 20px;
+}
