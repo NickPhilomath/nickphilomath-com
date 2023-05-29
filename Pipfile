@@ -8,6 +8,8 @@ django = "*"
 selenium = "*"
 python-dotenv = "*"
 mysqlclient = "*"
+celery = "*"
+requests = "*"
 
 [dev-packages]
 
