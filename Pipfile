@@ -10,6 +10,7 @@ python-dotenv = "*"
 mysqlclient = "*"
 celery = "*"
 requests = "*"
+django-redis = "*"
 
 [dev-packages]
 

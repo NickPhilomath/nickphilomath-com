@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # 'corsheaders',
+    "api",
 ]
 
 MIDDLEWARE = [
@@ -44,7 +46,10 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            os.path.join(BASE_DIR, "frontend/mainpage/build"),
+            os.path.join(BASE_DIR, "frontend/map"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -65,13 +70,13 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 DATABASES = {
     "default": {
-        # "ENGINE": "django.db.backends.sqlite3",
-        # "NAME": BASE_DIR / "db.sqlite3",
-        "ENGINE": "django.db.backends.mysql",
-        "HOST": "localhost",
-        "NAME": MYSQL_DATABASE,
-        "USER": MYSQL_USER,
-        "PASSWORD": MYSQL_PASSWORD,
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+        # "ENGINE": "django.db.backends.mysql",
+        # "HOST": "localhost",
+        # "NAME": MYSQL_DATABASE,
+        # "USER": MYSQL_USER,
+        # "PASSWORD": MYSQL_PASSWORD,
     }
 }
 
@@ -111,6 +116,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/build/static')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "frontend/map/static"),
+    os.path.join(BASE_DIR, "frontend/mainpage/build/static"),
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

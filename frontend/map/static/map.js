@@ -1,4 +1,27 @@
-const MAPDATA_URL = "mapDownloader/mapData/";
+function getBase64Image(img) {
+  // Create an empty canvas element
+  var canvas = document.createElement("canvas");
+  img.crossOrigin = "Anonymous";
+  canvas.width = img.width;
+  canvas.height = img.height;
+
+  // Copy the image contents to the canvas
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+
+  // console.log(ctx.getImageData(0, 0, 256, 256));
+
+  // Get the data-URL formatted image
+  // Firefox supports PNG and JPEG. You could check img.src to
+  // guess the original format, but be aware the using "image/jpg"
+  // will re-encode the image.
+  var dataURL = canvas.toDataURL("image/png");
+  // dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  // dataURL.replace("data:image/png;base64,", "");
+  return dataURL;
+}
+
+const MAPDATA_URL = "/static/mapData/";
 const GOOGLE_MAPDATA_URL = "https://khms0.googleapis.com/kh?v=947&hl=en-US&";
 const REMOVE_PADDING = 500;
 
@@ -15,6 +38,7 @@ class Region {
   width = 256;
   height = 256;
   error = false;
+  googleData = false;
   constructor(rx, ry, rz, useCache = true) {
     let url = "";
     if (useCache) {
@@ -85,8 +109,24 @@ const checkIfLoaded = () => {
       // get new one from google
       let region = new Region(regionIndex.x, regionIndex.y, regionIndex.z, false);
       region.updatePosition(pos.x, pos.y);
+      region.element.addEventListener("load", (event) => {
+        // map.removeChild(event.srcElement);
+        region.googleData = true;
+      });
       regions[i] = region;
       map.appendChild(region.element);
+    }
+  }
+};
+
+const checkGoogleLoadedData = () => {
+  for (let i = 0; i < regions.length; i++) {
+    if (regions[i].googleData) {
+      regions[i].googleData = false;
+      if (regions[i].element.width == 256) {
+        getBase64Image(regions[i].element);
+        // console.log(getBase64Image(regions[i].element));
+      }
     }
   }
 };
@@ -140,5 +180,6 @@ map.addEventListener("mouseup", (event) => {
 const interval = setInterval(() => {
   updateQuality();
   checkIfLoaded();
+  checkGoogleLoadedData();
   removeUnviewed();
 }, 100);
