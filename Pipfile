@@ -9,6 +9,8 @@ django = "*"
 celery = "*"
 python-dotenv = "*"
 django-redis = "*"
+tzdata = "*"
+djoser = "*"
 
 [dev-packages]
 

@@ -10,7 +10,9 @@ load_dotenv()
 # setting up some constants
 DEBUG = True
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 SECRET_KEY = os.getenv("SECRET_KEY")
+MAP_DATA_URL = os.getenv("MAP_DATA_URL")
 MYSQL_USER = os.getenv("MYSQL_USER")
 MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
@@ -27,6 +29,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'rest_framework_simplejwt',
     # 'corsheaders',
     "api",
 ]

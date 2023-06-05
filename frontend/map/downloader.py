@@ -19,7 +19,7 @@ while (True): # x < squares_root and y < squares_root
     y = random.randint(0, squares_root-1)
 
 
-    link = f"https://khms0.googleapis.com/kh?v=944&hl=en-US&x={x}&y={y}&z={zoom}"
+    link = f"https://khms0.googleapis.com/kh?v=944&hl=en-US&x={x}&y={y}&z={zoom}" # version 947
     file = f'mapData/z{zoom}/map-{x}-{y}-{zoom}.jpg'
     # check if file downloaded before
     if not exists(file):

@@ -15,15 +15,29 @@ function getBase64Image(img) {
   // Firefox supports PNG and JPEG. You could check img.src to
   // guess the original format, but be aware the using "image/jpg"
   // will re-encode the image.
-  var dataURL = canvas.toDataURL("image/png");
+  var dataURL = canvas.toDataURL("image/jfif").replace("data:image/png;base64,", "");
   // dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   // dataURL.replace("data:image/png;base64,", "");
   return dataURL;
 }
 
-const MAPDATA_URL = "/static/mapData/";
+const postData = async (regionIndex, img_data) => {
+  const rawResponse = await fetch(MAPDATA_URL + `?x=${regionIndex.x}&y=${regionIndex.y}&z=${regionIndex.z}`, {
+    method: "POST",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "test",
+    },
+    body: JSON.stringify({ data: img_data }),
+  });
+  const content = await rawResponse.json();
+  console.log(content);
+};
+
+const MAPDATA_URL = "/api/mapdata";
 const GOOGLE_MAPDATA_URL = "https://khms0.googleapis.com/kh?v=947&hl=en-US&";
-const REMOVE_PADDING = 500;
+const REMOVE_PADDING = 300;
 
 const map = document.getElementById("map");
 
@@ -42,7 +56,7 @@ class Region {
   constructor(rx, ry, rz, useCache = true) {
     let url = "";
     if (useCache) {
-      url = MAPDATA_URL + `z${rz}/map-${rx}-${ry}-${rz}.jpg`;
+      url = MAPDATA_URL + `?x=${rx}&y=${ry}&z=${rz}`;
     } else {
       url = GOOGLE_MAPDATA_URL + `x=${rx}&y=${ry}&z=${rz}`;
     }
@@ -124,8 +138,9 @@ const checkGoogleLoadedData = () => {
     if (regions[i].googleData) {
       regions[i].googleData = false;
       if (regions[i].element.width == 256) {
-        getBase64Image(regions[i].element);
-        // console.log(getBase64Image(regions[i].element));
+        let img_data = getBase64Image(regions[i].element);
+        let regionIndex = regions[i].regionIndex;
+        postData(regionIndex, img_data);
       }
     }
   }
