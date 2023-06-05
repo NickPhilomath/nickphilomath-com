@@ -197,7 +197,7 @@ map.addEventListener("mouseup", (event) => {
 
 const interval = setInterval(() => {
   updateQuality();
+  removeUnviewed();
   checkIfLoaded();
   checkGoogleLoadedData();
-  removeUnviewed();
 }, 100);
