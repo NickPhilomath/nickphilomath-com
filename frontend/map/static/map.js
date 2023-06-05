@@ -158,6 +158,9 @@ const removeUnviewed = () => {
 
 r = new Region(0, 0, 0);
 r.updatePosition(window.innerWidth / 2 - 128, window.innerHeight / 2 - 128);
+r.element.addEventListener("error", (event) => {
+  r.error = true;
+});
 regions.push(r);
 map.appendChild(r.element);
 
