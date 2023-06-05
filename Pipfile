@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 requests = "*"
 django = "*"
+celery = "*"
+python-dotenv = "*"
+django-redis = "*"
 
 [dev-packages]
 
