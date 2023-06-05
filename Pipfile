@@ -4,13 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-selenium = "*"
-python-dotenv = "*"
-mysqlclient = "*"
-celery = "*"
 requests = "*"
-django-redis = "*"
 
 [dev-packages]
 
