@@ -9,6 +9,7 @@ load_dotenv()
 
 # setting up some constants
 DEBUG = True
+#DEBUG = False
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
@@ -17,7 +18,7 @@ MYSQL_USER = os.getenv("MYSQL_USER")
 MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nickphilomath.com']
 
 
 # Application definition
@@ -121,13 +122,13 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/build/static')
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "frontend/map/static"),
-    os.path.join(BASE_DIR, "frontend/mainpage/build/static"),
-]
-
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "frontend/map/static"),
+        os.path.join(BASE_DIR, "frontend/mainpage/build/static"),
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/map/static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
