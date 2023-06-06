@@ -1,0 +1,20 @@
+
+# add www-data to user group 
+sudo usermod -a -G nick www-data
+
+# to see how many cpu core you have 
+nproc --all
+
+# number of gunicorn workers should be num_cores * 2 + 1
+
+# how to run gunicorn with django 
+gunicorn -w num_workers myproj.wsgi
+
+# supervisor installation 
+sudo apt install supervisor
+
+# supervisor conf file should be placed:
+/etc/supervisor/conf.d/
+
+# restrt supervisor
+sudo supervisorctl reload
