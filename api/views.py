@@ -29,14 +29,13 @@ def trailers_location(request):
 @api_view(["GET", "POST"])
 @permission_classes([AllowAny])
 def mapdata(request):
+    x = request.GET.get('x')
+    y = request.GET.get('y')
+    z = request.GET.get('z')
+    file_path = f'{settings.MAP_DATA_URL}/z{z}/{x}-{y}-{z}.jfif'
+    file_exists = os.path.exists(file_path)
+
     if request.method == "GET":
-        x = request.GET.get('x')
-        y = request.GET.get('y')
-        z = request.GET.get('z')
-
-        file_path = f'{settings.MAP_DATA_URL}/z{z}/{x}-{y}-{z}.jfif'
-        file_exists = os.path.exists(file_path)
-
         if file_exists:
             with open(file_path, 'rb') as fh:
                 response = HttpResponse(fh.read(), content_type="image/jpeg")
@@ -45,13 +44,7 @@ def mapdata(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == "POST":
-        x = request.GET.get('x')
-        y = request.GET.get('y')
-        z = request.GET.get('z')
-
         str_data = request.data["data"]
-        file_path = f'{settings.MAP_DATA_URL}/z{z}/{x}-{y}-{z}.jfif'
-        file_exists = os.path.exists(file_path)
 
         # check if data is not too few
         if len(str_data) < 3000:
