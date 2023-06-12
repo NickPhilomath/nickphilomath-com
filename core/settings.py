@@ -8,8 +8,12 @@ import os
 load_dotenv()
 
 # setting up some constants
-DEBUG = True
-#DEBUG = False
+
+if os.getenv("DEBUGE") == 'true':
+    DEBUG = True
+else:
+    DEBUG = False
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
