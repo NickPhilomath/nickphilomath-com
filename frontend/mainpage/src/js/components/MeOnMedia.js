@@ -1,8 +1,6 @@
 import { BsTelegram, BsGithub, BsYoutube, BsTwitter } from "react-icons/bs";
 import { SiItchdotio, SiPatreon } from "react-icons/si";
 
-import { Link } from "react-router-dom";
-
 const MeOnMedia = () => {
   const urls = [
     {
@@ -16,6 +14,16 @@ const MeOnMedia = () => {
       component: BsGithub,
     },
     {
+      link: "https://patreon.com/NickPhilomath",
+      name: "patreon",
+      component: SiPatreon,
+    },
+    {
+      link: "https://t.me/nickphilomath",
+      name: "telegram",
+      component: BsTelegram,
+    },
+    {
       link: "https://nickphilomath.itch.io",
       name: "itch",
       component: SiItchdotio,
@@ -25,27 +33,17 @@ const MeOnMedia = () => {
       name: "twitter",
       component: BsTwitter,
     },
-    {
-      link: "https://t.me/nickphilomath",
-      name: "telegram",
-      component: BsTelegram,
-    },
-    {
-      link: "https://patreon.com/NickPhilomath",
-      name: "patreon",
-      component: SiPatreon,
-    },
   ];
 
   return (
     <div className="MeOnMedia">
       <h1>Find me everywhere</h1>
-      <div className="logos">
+      <div className="logos w-50 row row-cols-lg-6 row-cols-sm-3 g-3">
         {urls.map((url) => {
           return (
-            <Link to={url.link} className={"logo " + url.name} target="blank">
+            <a to={url.link} className={"col logo " + url.name} target="blank">
               <url.component />
-            </Link>
+            </a>
           );
         })}
       </div>

@@ -20,6 +20,9 @@ MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
 
 ALLOWED_HOSTS = ['nickphilomath.com']
 
+if DEBUG:
+    ALLOWED_HOSTS += ['127.0.0.1']
+
 
 # Application definition
 

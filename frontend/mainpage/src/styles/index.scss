@@ -7,3 +7,23 @@
 body {
   font-family: sans-serif;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #a0a0a0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5b5b5b;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
