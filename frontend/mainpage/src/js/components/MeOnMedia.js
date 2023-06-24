@@ -41,7 +41,7 @@ const MeOnMedia = () => {
       <div className="logos w-50 row row-cols-lg-6 row-cols-sm-3 g-3">
         {urls.map((url) => {
           return (
-            <a to={url.link} className={"col logo " + url.name} target="blank">
+            <a href={url.link} className={"col logo " + url.name} target="blank">
               <url.component />
             </a>
           );
