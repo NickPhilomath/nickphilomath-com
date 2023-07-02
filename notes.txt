@@ -18,3 +18,8 @@ sudo apt install supervisor
 
 # restrt supervisor
 sudo supervisorctl reload
+
+
+# make with docker
+docker build -t nickphilomath .
+docker run -dp 127.0.0.1:8000:8000 nickphilomath
