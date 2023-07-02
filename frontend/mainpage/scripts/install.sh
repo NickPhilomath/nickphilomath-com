@@ -1,0 +1,3 @@
+echo installing frontend mainpage...
+
+cp -r frontend/mainpage/build/static/* static

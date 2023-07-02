@@ -1,0 +1,3 @@
+echo installing map...
+
+cp -r map/static/* static

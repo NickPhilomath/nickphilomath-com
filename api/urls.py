@@ -3,8 +3,8 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView
 )
 from django.urls import path
-from .views import mapdata
 
+from map.views import mapdata
 
 urlpatterns = [
     # path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),

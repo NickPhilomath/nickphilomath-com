@@ -9,7 +9,7 @@ load_dotenv()
 
 # setting up some constants
 
-if os.getenv("DEBUGE") == 'true':
+if os.getenv("DEBUG") == 'true':
     DEBUG = True
 else:
     DEBUG = False
@@ -17,7 +17,7 @@ else:
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
-MAP_DATA_URL = os.getenv("MAP_DATA_URL")
+MAP_DATA_PATH = os.getenv("MAP_DATA_PATH")
 MYSQL_USER = os.getenv("MYSQL_USER")
 MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     # 'corsheaders',
     "api",
+    "map"
 ]
 
 MIDDLEWARE = [
