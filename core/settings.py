@@ -22,7 +22,7 @@ MYSQL_USER = os.getenv("MYSQL_USER")
 MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
 
-ALLOWED_HOSTS = ['nickphilomath.com']
+ALLOWED_HOSTS = ['nickphilomath.com', 'caravon.uz']
 
 if DEBUG:
     ALLOWED_HOSTS += ['127.0.0.1']
